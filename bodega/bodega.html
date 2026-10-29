@@ -638,7 +638,8 @@ tr.tipo td{ font-size:12px; color:#3a3a3c; padding-top:5px; padding-bottom:5px; 
 // Portal de requisiciones (mismo token del login AP1). Ver inventario-laboratorios/reporte_inventario.py.
 // En localhost pasa por comun/server.py (/bff/* → gateway) para evitar CORS.
 const LOCAL = window.location.hostname === 'localhost';
-const GATEWAY = LOCAL ? '' : 'https://gateway.naturisa.com.ec';
+// Fuera de localhost (GitHub Pages) se pasa por el proxy transparente del Worker: el login de AP1 no acepta CORS desde github.io
+const GATEWAY = LOCAL ? '' : 'https://naturisa-proxy.parragajonathan965.workers.dev';
 const AUTH_URL = GATEWAY + '/bff/web/ap1/security/api/auth';
 const PORTAL = GATEWAY + '/bff/web/portal/backoffice/api';
 const AP1 = GATEWAY + '/bff/web/ap1/backoffice/api';
